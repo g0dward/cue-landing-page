@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import GetStartedSection from "@/components/GetStartedSection";
+import InsightsSection from "@/components/InsightsSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <GetStartedSection />
+      <InsightsSection />
     </main>
   );
 }
