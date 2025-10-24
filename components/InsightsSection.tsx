@@ -105,8 +105,8 @@ export default function InsightsSection() {
         </div>
 
         {/* Cards Carousel */}
-        <div className="relative overflow-hidden cursor-grab active:cursor-grabbing">
-          <AnimatePresence initial={false} custom={direction}>
+        <div className="relative h-[520px] cursor-grab active:cursor-grabbing md:h-[540px]">
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
               key={page}
               custom={direction}
@@ -121,6 +121,7 @@ export default function InsightsSection() {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
+              dragDirectionLock
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
@@ -130,7 +131,7 @@ export default function InsightsSection() {
                   paginate(-1);
                 }
               }}
-              className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+              className="absolute inset-0 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
               style={{ touchAction: "pan-y" }}
             >
               {visibleCards.map((card, index) => (
