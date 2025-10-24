@@ -105,8 +105,8 @@ export default function InsightsSection() {
         </div>
 
         {/* Cards Carousel */}
-        <div className="relative overflow-hidden">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+        <div className="relative overflow-hidden cursor-grab active:cursor-grabbing">
+          <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={page}
               custom={direction}
@@ -120,7 +120,7 @@ export default function InsightsSection() {
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
+              dragElastic={0.2}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
@@ -131,9 +131,10 @@ export default function InsightsSection() {
                 }
               }}
               className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+              style={{ touchAction: "pan-y" }}
             >
               {visibleCards.map((card, index) => (
-                <div key={startIndex + index}>
+                <div key={startIndex + index} className="pointer-events-none">
                   <InsightsCard
                     image={card.image}
                     title={card.title}
