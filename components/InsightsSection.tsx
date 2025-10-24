@@ -27,6 +27,27 @@ const cardsData = [
       "Discover patterns in how you present ideas and engage with stakeholders, with specific suggestions for improvement.",
     imageAlt: "Conversation improvement insights",
   },
+  {
+    image: "/images/card-image-1.png",
+    title: "Track Action Items",
+    description:
+      "Never lose track of commitments. Cue automatically identifies and organizes action items from every meeting.",
+    imageAlt: "Action items tracking interface",
+  },
+  {
+    image: "/images/card-image-2.png",
+    title: "Share Key Moments",
+    description:
+      "Create and share highlights from your meetings. Perfect for stakeholder updates and team alignment.",
+    imageAlt: "Sharing meeting highlights",
+  },
+  {
+    image: "/images/card-image-3.png",
+    title: "Search Your History",
+    description:
+      "Find any discussion instantly. Search across all your meetings to surface important context when you need it.",
+    imageAlt: "Meeting history search",
+  },
 ];
 
 const slideVariants = {
