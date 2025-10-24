@@ -52,7 +52,7 @@ const cardsData = [
 
 const slideVariants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
+    x: direction > 0 ? 300 : -300,
     opacity: 0,
   }),
   center: {
@@ -62,9 +62,14 @@ const slideVariants = {
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
+    x: direction < 0 ? 300 : -300,
     opacity: 0,
   }),
+};
+
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
 };
 
 export default function InsightsSection() {
@@ -110,8 +115,20 @@ export default function InsightsSection() {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
+                x: { type: "spring", stiffness: 500, damping: 40 },
+                opacity: { duration: 0.15 },
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
+
+                if (swipe < -swipeConfidenceThreshold) {
+                  paginate(1);
+                } else if (swipe > swipeConfidenceThreshold) {
+                  paginate(-1);
+                }
               }}
               className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
             >
