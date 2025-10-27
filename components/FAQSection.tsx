@@ -93,7 +93,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-4">
+                      <div className="px-6 pb-6 pt-2">
                         <p className="text-[16px] font-normal leading-[24px] text-zinc-500">
                           {faq.answer}
                         </p>
