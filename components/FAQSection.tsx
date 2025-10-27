@@ -45,7 +45,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative w-full bg-white py-36">
+    <section className="relative w-full bg-white py-18">
       <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Section Separator */}
         <div className="mb-36 h-px w-full bg-zinc-200" />
