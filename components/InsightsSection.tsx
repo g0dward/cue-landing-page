@@ -87,10 +87,10 @@ export default function InsightsSection() {
   const visibleCards = cardsData.slice(startIndex, startIndex + 3);
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-24">
+    <section className="relative w-full bg-white py-36">
       <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Section Separator */}
-        <div className="mb-16 h-px w-full bg-zinc-200 md:mb-24" />
+        <div className="mb-36 h-px w-full bg-zinc-200" />
 
         {/* Section Header */}
         <div className="mx-auto mb-12 max-w-[966px] text-center md:mb-16">
