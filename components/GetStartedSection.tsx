@@ -15,7 +15,7 @@ const features = [
   },
   {
     image: "/images/feature-record.png",
-    title: "Invisible Backround Recording",
+    title: "Invisible Background Recording",
     description:
       "Capture calls silently on your device. No bots, no alerts, only natural conversations every time.",
     imageAlt: "Background recording interface",

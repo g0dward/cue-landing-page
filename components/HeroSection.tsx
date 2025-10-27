@@ -19,7 +19,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Hero Text Content */}
         <motion.div
           className="mx-auto flex max-w-[966px] flex-col items-center text-center"
@@ -68,7 +68,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Hero Image Section */}
-        <div className="relative mx-auto mt-8 h-[240px] w-full overflow-hidden sm:h-[320px] md:mt-[48px] md:h-[480px] md:max-w-[1440px]">
+        <div className="relative mx-auto mt-8 h-[240px] w-full overflow-hidden sm:h-[320px] md:mt-[48px] md:h-[480px]">
           <Image
             src="/images/hero-temporary.png"
             alt="Cue app interface showing meeting notes"

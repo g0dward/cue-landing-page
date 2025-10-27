@@ -35,3 +35,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Hide Next.js dev indicators */
+#nextjs__container_errors_label,
+#nextjs__container_build_error_label,
+nextjs-portal {
+  display: none !important;
+}

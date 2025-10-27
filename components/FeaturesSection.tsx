@@ -45,7 +45,7 @@ const itemVariants = {
 
 export default function FeaturesSection() {
   return (
-    <section className="relative w-full bg-white py-12 sm:py-16 md:py-[72px]">
+    <section className="relative w-full bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Section Header */}
         <div className="mx-auto mb-12 max-w-[966px] text-center md:mb-[72px]">
