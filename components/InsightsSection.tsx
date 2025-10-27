@@ -165,18 +165,8 @@ export default function InsightsSection() {
 
       {/* Navigation Controls */}
       <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
-        <div className="mt-12 flex items-center justify-center gap-6">
-          {/* Left Button */}
-          <button
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            className="transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-30"
-            aria-label="Previous card"
-          >
-            <ChevronLeft className="h-6 w-6 text-zinc-950" />
-          </button>
-
-          {/* Pagination Dots */}
+        <div className="mt-12 flex items-center justify-between">
+          {/* Pagination Dots - Left */}
           <div className="flex gap-2">
             {cardsData.slice(0, cardsData.length - 2).map((_, index) => (
               <button
@@ -199,15 +189,26 @@ export default function InsightsSection() {
             ))}
           </div>
 
-          {/* Right Button */}
-          <button
-            onClick={handleNext}
-            disabled={currentIndex === cardsData.length - 3}
-            className="transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-30"
-            aria-label="Next card"
-          >
-            <ChevronRight className="h-6 w-6 text-zinc-950" />
-          </button>
+          {/* Navigation Buttons - Right */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Previous card"
+            >
+              <ChevronLeft className="h-5 w-5 text-zinc-950" />
+            </button>
+
+            <button
+              onClick={handleNext}
+              disabled={currentIndex === cardsData.length - 3}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Next card"
+            >
+              <ChevronRight className="h-5 w-5 text-zinc-950" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
