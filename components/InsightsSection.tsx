@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import InsightsCard from "./InsightsCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -50,41 +50,44 @@ const cardsData = [
   },
 ];
 
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 50 : -50,
-    opacity: 0,
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? -50 : 50,
-    opacity: 0,
-  }),
-};
-
-const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
-
 export default function InsightsSection() {
-  const [[page, direction], setPage] = useState([0, 0]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const x = useMotionValue(0);
 
-  const paginate = (newDirection: number) => {
-    const newPage = page + newDirection;
-    if (newPage >= 0 && newPage < 2) {
-      setPage([newPage, newDirection]);
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      const newIndex = currentIndex - 1;
+      setCurrentIndex(newIndex);
+      const container = containerRef.current;
+      if (container) {
+        const cardWidth = container.scrollWidth / cardsData.length;
+        const newX = -newIndex * (cardWidth + 24); // 24px gap
+        animate(x, newX, {
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        });
+      }
     }
   };
 
-  // Calculate which cards to show based on page
-  const startIndex = page * 3;
-  const visibleCards = cardsData.slice(startIndex, startIndex + 3);
+  const handleNext = () => {
+    if (currentIndex < cardsData.length - 3) {
+      const newIndex = currentIndex + 1;
+      setCurrentIndex(newIndex);
+      const container = containerRef.current;
+      if (container) {
+        const cardWidth = container.scrollWidth / cardsData.length;
+        const newX = -newIndex * (cardWidth + 24); // 24px gap
+        animate(x, newX, {
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        });
+      }
+    }
+  };
 
   return (
     <section className="relative w-full bg-white py-18">
@@ -105,81 +108,97 @@ export default function InsightsSection() {
         </div>
 
         {/* Cards Carousel */}
-        <div className="relative h-[520px] cursor-grab active:cursor-grabbing md:h-[540px]">
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            <motion.div
-              key={page}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "tween", duration: 0.6, ease: [0.4, 0.0, 0.2, 1] },
-                opacity: { duration: 0.6, ease: [0.4, 0.0, 0.2, 1] },
-              }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              dragDirectionLock
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
+        <div className="relative overflow-hidden">
+          <motion.div
+            ref={containerRef}
+            className="flex gap-6"
+            style={{ x }}
+            drag="x"
+            dragConstraints={{
+              left: -(cardsData.length - 3) * 450,
+              right: 0,
+            }}
+            dragElastic={0.1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const container = containerRef.current;
+              if (!container) return;
 
-                if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1);
-                } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1);
-                }
-              }}
-              className="absolute inset-0 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
-              style={{ touchAction: "pan-y" }}
-            >
-              {visibleCards.map((card, index) => (
-                <div key={startIndex + index} className="pointer-events-none">
-                  <InsightsCard
-                    image={card.image}
-                    title={card.title}
-                    description={card.description}
-                    imageAlt={card.imageAlt}
-                  />
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+              const cardWidth = 426; // approximate card width + gap
+              const swipeThreshold = 50;
+
+              if (offset.x < -swipeThreshold && currentIndex < cardsData.length - 3) {
+                handleNext();
+              } else if (offset.x > swipeThreshold && currentIndex > 0) {
+                handlePrevious();
+              } else {
+                // Snap back to current position
+                const cardWidthWithGap = cardWidth + 24;
+                const currentX = -currentIndex * cardWidthWithGap;
+                animate(x, currentX, {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                });
+              }
+            }}
+          >
+            {cardsData.map((card, index) => (
+              <div
+                key={index}
+                className="min-w-[340px] sm:min-w-[380px] lg:min-w-[426px]"
+              >
+                <InsightsCard
+                  image={card.image}
+                  title={card.title}
+                  description={card.description}
+                  imageAlt={card.imageAlt}
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Navigation Controls */}
         <div className="mt-12 flex items-center justify-center gap-4">
           {/* Left Button */}
           <button
-            onClick={() => paginate(-1)}
-            disabled={page === 0}
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Previous cards"
+            aria-label="Previous card"
           >
             <ChevronLeft className="h-4 w-4 text-zinc-950" />
           </button>
 
           {/* Pagination Dots */}
           <div className="flex gap-1">
-            {[0, 1].map((dotIndex) => (
+            {cardsData.slice(0, cardsData.length - 2).map((_, index) => (
               <button
-                key={dotIndex}
-                onClick={() => setPage([dotIndex, dotIndex > page ? 1 : -1])}
+                key={index}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  const cardWidthWithGap = 450;
+                  const newX = -index * cardWidthWithGap;
+                  animate(x, newX, {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  });
+                }}
                 className={`h-2 w-2 rounded-full transition-colors ${
-                  page === dotIndex ? "bg-zinc-950" : "bg-zinc-200"
+                  currentIndex === index ? "bg-zinc-950" : "bg-zinc-200"
                 }`}
-                aria-label={`Go to page ${dotIndex + 1}`}
+                aria-label={`Go to card ${index + 1}`}
               />
             ))}
           </div>
 
           {/* Right Button */}
           <button
-            onClick={() => paginate(1)}
-            disabled={page === 1}
+            onClick={handleNext}
+            disabled={currentIndex === cardsData.length - 3}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Next cards"
+            aria-label="Next card"
           >
             <ChevronRight className="h-4 w-4 text-zinc-950" />
           </button>
