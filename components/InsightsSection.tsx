@@ -52,18 +52,21 @@ const cardsData = [
 
 const slideVariants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
+    x: direction > 0 ? 200 : -200,
     opacity: 0,
+    scale: 0.95,
   }),
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
+    scale: 1,
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 300 : -300,
+    x: direction < 0 ? 200 : -200,
     opacity: 0,
+    scale: 0.95,
   }),
 };
 
@@ -115,13 +118,15 @@ export default function InsightsSection() {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: "spring", stiffness: 500, damping: 40 },
-                opacity: { duration: 0.15 },
+                x: { type: "spring", stiffness: 300, damping: 30, mass: 0.8 },
+                opacity: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                scale: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
+              dragElastic={0.3}
               dragDirectionLock
+              dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
