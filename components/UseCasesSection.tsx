@@ -111,6 +111,17 @@ export default function UseCasesSection() {
             ))}
           </div>
         </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 flex flex-col items-center gap-4 text-center md:mt-24">
+          <button className="rounded-[100px] bg-zinc-950 px-8 py-4 text-[18px] font-bold leading-[24px] text-white transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2">
+            Try Cue Free Today
+          </button>
+          <p className="text-[14px] font-normal leading-[20px] text-zinc-500">
+            Download on iOS • No credit card needed • Enterprise and educational
+            pricing available
+          </p>
+        </div>
       </div>
     </section>
   );
