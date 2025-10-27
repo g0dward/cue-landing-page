@@ -42,12 +42,9 @@ export default function UseCasesSection() {
 
         {/* Section Header */}
         <div className="mx-auto mb-12 max-w-[966px] text-center md:mb-16">
-          <h2 className="mb-4 text-[36px] font-black leading-[44px] text-zinc-950 sm:text-[42px] sm:leading-[48px] md:text-[48px] md:leading-[48px]">
-            Perfect For Every Conversation
+          <h2 className="text-[36px] font-black leading-[44px] text-zinc-950 sm:text-[42px] sm:leading-[48px] md:text-[48px] md:leading-[48px]">
+            Why Choose Cue
           </h2>
-          <p className="text-[16px] font-normal leading-[26px] text-zinc-500 sm:text-[18px] sm:leading-[28px]">
-            From boardrooms to classrooms, Cue adapts to your needs
-          </p>
         </div>
 
         {/* Use Cases Grid */}
