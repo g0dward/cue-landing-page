@@ -68,7 +68,9 @@ export default function FAQSection() {
                 {/* Question Button */}
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="flex w-full items-center justify-between gap-4 p-6 text-left"
+                  className={`flex w-full items-center justify-between gap-4 px-6 text-left ${
+                    openIndex === index ? "pb-2 pt-6" : "py-6"
+                  }`}
                   aria-expanded={openIndex === index}
                 >
                   <span className="text-[18px] font-bold leading-[26px] text-zinc-950">
@@ -93,7 +95,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-2">
+                      <div className="px-6 pb-6">
                         <p className="text-[16px] font-normal leading-[24px] text-zinc-500">
                           {faq.answer}
                         </p>
