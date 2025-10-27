@@ -166,9 +166,9 @@ export default function InsightsSection() {
       </div>
 
       {/* Navigation Controls */}
-      <div className="relative mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
-        <div className="relative mt-12 flex items-center justify-center">
-          {/* Pagination Dots - Center */}
+      <div className="relative w-full">
+        {/* Pagination Dots - Center */}
+        <div className="mx-auto mt-12 flex w-full max-w-[1296px] items-center justify-center px-4 sm:px-8 md:px-[72px]">
           <div className="flex gap-2">
             {cardsData.slice(0, cardsData.length - 2).map((_, index) => (
               <button
@@ -192,8 +192,8 @@ export default function InsightsSection() {
           </div>
         </div>
 
-        {/* Navigation Buttons - Sticky Right on Large Screens */}
-        <div className="absolute right-4 top-12 flex items-center gap-3 sm:right-8 md:right-[72px]">
+        {/* Navigation Buttons - Fixed to Right Edge */}
+        <div className="absolute right-4 top-12 flex items-center gap-3 sm:right-6 md:right-8 lg:right-12">
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
