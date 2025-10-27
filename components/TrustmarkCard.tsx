@@ -14,7 +14,10 @@ export default function TrustmarkCard({
   iconAlt,
 }: TrustmarkCardProps) {
   return (
-    <div className="flex min-h-[200px] w-full flex-col rounded-[20px] border border-zinc-200 bg-white p-6 sm:min-h-[220px] sm:p-8 md:min-h-[232px] md:p-[48px]">
+    <div
+      className="flex min-h-[200px] w-full flex-col rounded-[20px] border border-zinc-200 bg-white p-6 sm:min-h-[220px] sm:p-8 md:min-h-[232px] md:p-[48px]"
+      style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.08)' }}
+    >
       {/* Icon */}
       <div className="mb-3 h-[40px] w-[40px] md:mb-[16px]">
         <Image
