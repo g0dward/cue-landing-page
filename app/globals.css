@@ -42,3 +42,17 @@ body {
 nextjs-portal {
   display: none !important;
 }
+
+/* Cursor styles for interactive elements */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[disabled] {
+  cursor: not-allowed;
+}
