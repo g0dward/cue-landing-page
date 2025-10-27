@@ -14,15 +14,16 @@ export default function InsightsCard({
   imageAlt,
 }: InsightsCardProps) {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full select-none flex-col gap-8">
       {/* Rotated Image Container */}
       <div className="relative h-[416px] w-full overflow-hidden rounded-[20px]">
         <Image
           src={image}
           alt={imageAlt}
           fill
-          className="object-cover"
+          className="pointer-events-none object-cover"
           loading="lazy"
+          draggable={false}
         />
       </div>
 

@@ -106,12 +106,15 @@ export default function InsightsSection() {
             conversation.
           </p>
         </div>
+      </div>
 
-        {/* Cards Carousel */}
-        <div className="relative overflow-hidden">
+      {/* Cards Carousel - Full Width */}
+      <div className="relative w-full overflow-hidden">
+        <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
+          <div className="relative -mx-4 sm:-mx-8 md:-mx-[72px]">
           <motion.div
             ref={containerRef}
-            className="flex gap-6"
+            className="flex gap-6 pl-4 sm:pl-8 md:pl-[72px]"
             style={{ x }}
             drag="x"
             dragConstraints={{
@@ -156,9 +159,12 @@ export default function InsightsSection() {
               </div>
             ))}
           </motion.div>
+          </div>
         </div>
+      </div>
 
-        {/* Navigation Controls */}
+      {/* Navigation Controls */}
+      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         <div className="mt-12 flex items-center justify-center gap-4">
           {/* Left Button */}
           <button
