@@ -110,90 +110,93 @@ export default function InsightsSection() {
         </div>
       </div>
 
-      {/* Cards Carousel - Full Width */}
-      <div className="relative w-full overflow-hidden">
-        <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
-          <div className="relative -mx-4 sm:-mx-8 md:-mx-[72px]">
-          <motion.div
-            ref={containerRef}
-            className="flex cursor-pointer gap-6 pl-4 sm:pl-8 md:pl-[72px]"
-            style={{ x }}
-            drag="x"
-            dragConstraints={{
-              left: -(cardsData.length - 3) * 450,
-              right: 0,
-            }}
-            dragElastic={0.1}
-            onDragEnd={(e, { offset, velocity }) => {
-              const container = containerRef.current;
-              if (!container) return;
-
-              const cardWidth = 426; // approximate card width + gap
-              const swipeThreshold = 50;
-
-              if (offset.x < -swipeThreshold && currentIndex < cardsData.length - 3) {
-                handleNext();
-              } else if (offset.x > swipeThreshold && currentIndex > 0) {
-                handlePrevious();
-              } else {
-                // Snap back to current position
-                const cardWidthWithGap = cardWidth + 24;
-                const currentX = -currentIndex * cardWidthWithGap;
-                animate(x, currentX, {
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                });
-              }
-            }}
-          >
-            {cardsData.map((card, index) => (
-              <div
-                key={index}
-                className="min-w-[340px] sm:min-w-[380px] lg:min-w-[426px]"
-              >
-                <InsightsCard
-                  image={card.image}
-                  title={card.title}
-                  description={card.description}
-                  imageAlt={card.imageAlt}
-                />
-              </div>
-            ))}
-          </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Controls */}
+      {/* Wrapper for Carousel and Navigation */}
       <div className="relative w-full">
-        {/* Pagination Dots - Center */}
-        <div className="mx-auto mt-12 flex w-full max-w-[1296px] items-center justify-center px-4 sm:px-8 md:px-[72px]">
-          <div className="flex gap-2">
-            {cardsData.slice(0, cardsData.length - 2).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  const cardWidthWithGap = 450;
-                  const newX = -index * cardWidthWithGap;
-                  animate(x, newX, {
+        {/* Cards Carousel - Full Width */}
+        <div className="w-full overflow-hidden">
+          <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
+            <div className="relative -mx-4 sm:-mx-8 md:-mx-[72px]">
+            <motion.div
+              ref={containerRef}
+              className="flex cursor-pointer gap-6 pl-4 sm:pl-8 md:pl-[72px]"
+              style={{ x }}
+              drag="x"
+              dragConstraints={{
+                left: -(cardsData.length - 3) * 450,
+                right: 0,
+              }}
+              dragElastic={0.1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const container = containerRef.current;
+                if (!container) return;
+
+                const cardWidth = 426; // approximate card width + gap
+                const swipeThreshold = 50;
+
+                if (offset.x < -swipeThreshold && currentIndex < cardsData.length - 3) {
+                  handleNext();
+                } else if (offset.x > swipeThreshold && currentIndex > 0) {
+                  handlePrevious();
+                } else {
+                  // Snap back to current position
+                  const cardWidthWithGap = cardWidth + 24;
+                  const currentX = -currentIndex * cardWidthWithGap;
+                  animate(x, currentX, {
                     type: "spring",
                     stiffness: 300,
                     damping: 30,
                   });
-                }}
-                className={`h-2 w-2 rounded-full transition-colors ${
-                  currentIndex === index ? "bg-zinc-950" : "bg-zinc-200"
-                }`}
-                aria-label={`Go to card ${index + 1}`}
-              />
-            ))}
+                }
+              }}
+            >
+              {cardsData.map((card, index) => (
+                <div
+                  key={index}
+                  className="min-w-[340px] sm:min-w-[380px] lg:min-w-[426px]"
+                >
+                  <InsightsCard
+                    image={card.image}
+                    title={card.title}
+                    description={card.description}
+                    imageAlt={card.imageAlt}
+                  />
+                </div>
+              ))}
+            </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="w-full">
+          {/* Pagination Dots - Center */}
+          <div className="mx-auto mt-12 flex w-full max-w-[1296px] items-center justify-center px-4 sm:px-8 md:px-[72px]">
+            <div className="flex gap-2">
+              {cardsData.slice(0, cardsData.length - 2).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    const cardWidthWithGap = 450;
+                    const newX = -index * cardWidthWithGap;
+                    animate(x, newX, {
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                    });
+                  }}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    currentIndex === index ? "bg-zinc-950" : "bg-zinc-200"
+                  }`}
+                  aria-label={`Go to card ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Navigation Buttons - Fixed to Right Edge */}
-        <div className="absolute right-4 top-12 flex items-center gap-3 sm:right-6 md:right-8 lg:right-12">
+        <div className="absolute bottom-0 right-4 flex items-center gap-3 sm:right-6 md:right-8 lg:right-12">
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
