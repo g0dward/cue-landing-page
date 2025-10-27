@@ -35,9 +35,9 @@ export default function UseCasesSection() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-18">
+    <section className="relative w-full bg-white py-9 md:py-18">
       {/* Section Separator - Full Width */}
-      <div className="mb-36 px-4 sm:px-8 md:px-[72px]">
+      <div className="mb-18 px-4 sm:px-8 md:mb-36 md:px-[72px]">
         <div className="h-px w-full bg-zinc-200" />
       </div>
 
