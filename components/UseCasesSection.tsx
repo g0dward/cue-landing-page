@@ -55,7 +55,7 @@ export default function UseCasesSection() {
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="group flex flex-col overflow-hidden rounded-[20px] bg-neutral-50 transition-transform hover:scale-[1.02]"
+              className="flex flex-col overflow-hidden rounded-[20px] bg-neutral-50"
             >
               {/* Image */}
               <div className="relative h-[240px] w-full overflow-hidden">
@@ -63,7 +63,7 @@ export default function UseCasesSection() {
                   src={useCase.image}
                   alt={useCase.title}
                   fill
-                  className="object-cover transition-transform group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
               </div>
