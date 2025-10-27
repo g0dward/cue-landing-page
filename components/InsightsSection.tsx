@@ -114,7 +114,7 @@ export default function InsightsSection() {
           <div className="relative -mx-4 sm:-mx-8 md:-mx-[72px]">
           <motion.div
             ref={containerRef}
-            className="flex gap-6 pl-4 sm:pl-8 md:pl-[72px]"
+            className="flex cursor-pointer gap-6 pl-4 sm:pl-8 md:pl-[72px]"
             style={{ x }}
             drag="x"
             dragConstraints={{
