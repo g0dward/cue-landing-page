@@ -73,10 +73,12 @@ const itemVariants = {
 export default function GetStartedSection() {
   return (
     <section className="relative w-full bg-white py-18">
-      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
-        {/* Section Separator */}
-        <div className="mb-36 h-px w-full bg-zinc-200" />
+      {/* Section Separator - Full Width */}
+      <div className="mb-36 px-4 sm:px-8 md:px-[72px]">
+        <div className="h-px w-full bg-zinc-200" />
+      </div>
 
+      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Section Heading */}
         <h2 className="mb-12 text-center text-[36px] font-black leading-[44px] text-zinc-950 sm:text-[42px] sm:leading-[48px] md:mb-24 md:text-[48px] md:leading-[48px]">
           Get started in seconds

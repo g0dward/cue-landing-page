@@ -91,10 +91,12 @@ export default function InsightsSection() {
 
   return (
     <section className="relative w-full bg-white py-18">
-      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
-        {/* Section Separator */}
-        <div className="mb-36 h-px w-full bg-zinc-200" />
+      {/* Section Separator - Full Width */}
+      <div className="mb-36 px-4 sm:px-8 md:px-[72px]">
+        <div className="h-px w-full bg-zinc-200" />
+      </div>
 
+      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         {/* Section Header */}
         <div className="mx-auto mb-12 max-w-[966px] text-center md:mb-16">
           <h2 className="mb-4 text-[36px] font-black leading-[44px] text-zinc-950 sm:text-[42px] sm:leading-[48px] md:text-[48px] md:leading-[48px]">
@@ -164,7 +166,7 @@ export default function InsightsSection() {
       </div>
 
       {/* Navigation Controls */}
-      <div className="mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
+      <div className="relative mx-auto w-full max-w-[1296px] px-4 sm:px-8 md:px-[72px]">
         <div className="relative mt-12 flex items-center justify-center">
           {/* Pagination Dots - Center */}
           <div className="flex gap-2">
@@ -188,27 +190,27 @@ export default function InsightsSection() {
               />
             ))}
           </div>
+        </div>
 
-          {/* Navigation Buttons - Right */}
-          <div className="absolute right-0 flex items-center gap-3">
-            <button
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-              aria-label="Previous card"
-            >
-              <ChevronLeft className="h-5 w-5 text-zinc-950" />
-            </button>
+        {/* Navigation Buttons - Sticky Right on Large Screens */}
+        <div className="absolute right-4 top-12 flex items-center gap-3 sm:right-8 md:right-[72px]">
+          <button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Previous card"
+          >
+            <ChevronLeft className="h-5 w-5 text-zinc-950" />
+          </button>
 
-            <button
-              onClick={handleNext}
-              disabled={currentIndex === cardsData.length - 3}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-              aria-label="Next card"
-            >
-              <ChevronRight className="h-5 w-5 text-zinc-950" />
-            </button>
-          </div>
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === cardsData.length - 3}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Next card"
+          >
+            <ChevronRight className="h-5 w-5 text-zinc-950" />
+          </button>
         </div>
       </div>
     </section>
