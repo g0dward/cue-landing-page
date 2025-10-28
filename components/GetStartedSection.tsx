@@ -5,7 +5,7 @@ import FeatureCard from "./FeatureCard";
 
 const features = [
   {
-    image: "/images/feature-hero.png",
+    image: "/images/feature-hero-2.png",
     title: "Instant Summaries & Actions",
     description:
       "Receive summaries and action items in seconds. Search, share, and connect seamlessly with your tools.",

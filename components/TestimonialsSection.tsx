@@ -100,10 +100,10 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Scrolling Testimonials - Full Width */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full py-4" style={{ overflowX: "hidden", overflowY: "visible" }}>
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden"
+          className="flex gap-6 px-4 sm:px-8 md:px-[72px]"
           style={{ scrollBehavior: "auto" }}
         >
           {duplicatedTestimonials.map((testimonial, index) => (
@@ -118,8 +118,8 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Fade gradients on edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-32 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-32 bg-gradient-to-l from-white to-transparent" />
       </div>
     </section>
   );

@@ -14,7 +14,10 @@ export default function TestimonialCard({
   profileImage,
 }: TestimonialCardProps) {
   return (
-    <div className="flex h-[288px] w-[416px] shrink-0 flex-col gap-8 rounded-[20px] border border-zinc-200 bg-white p-8">
+    <div
+      className="flex h-[288px] w-[416px] shrink-0 flex-col gap-8 rounded-[20px] border border-zinc-200 bg-white p-8"
+      style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.08)' }}
+    >
       {/* Quote */}
       <p className="flex-1 text-[16px] font-normal leading-[24px] text-zinc-500">
         {quote}

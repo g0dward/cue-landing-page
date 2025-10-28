@@ -7,46 +7,46 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cardsData = [
   {
-    image: "/images/card-image-1.png",
+    image: "/images/carousel-card-06.png",
     title: "Ask Questions About Your Meetings",
     description:
       'Get instant answers from your meeting history. "What did we decide about the Q2 budget?" Cue surfaces exactly what you need.',
     imageAlt: "AI assistant answering questions",
   },
   {
-    image: "/images/card-image-2.png",
+    image: "/images/carousel-card-05.png",
     title: "Get Meeting Dynamics Feedback",
     description:
       "Analyze speaking patterns and participation balance to run more effective, inclusive meetings.",
     imageAlt: "Meeting dynamics visualization",
   },
   {
-    image: "/images/card-image-3.png",
+    image: "/images/carousel-card-04.png",
     title: "Improve Your Conversation",
     description:
       "Discover patterns in how you present ideas and engage with stakeholders, with specific suggestions for improvement.",
     imageAlt: "Conversation improvement insights",
   },
   {
-    image: "/images/card-image-1.png",
-    title: "Track Action Items",
+    image: "/images/carousel-card-03.png",
+    title: "Edit & Refine Summaries",
     description:
-      "Never lose track of commitments. Cue automatically identifies and organizes action items from every meeting.",
-    imageAlt: "Action items tracking interface",
+      "Adjust summaries for different audiences or restructure information — the AI adapts to your exact needs.",
+    imageAlt: "Editing and refining meeting summaries",
   },
   {
-    image: "/images/card-image-2.png",
-    title: "Share Key Moments",
+    image: "/images/carousel-card-02.png",
+    title: "Draft Follow-Up Communications",
     description:
-      "Create and share highlights from your meetings. Perfect for stakeholder updates and team alignment.",
-    imageAlt: "Sharing meeting highlights",
+      "Turn discussions into polished emails, messages, or updates instantly with the right tone and context.",
+    imageAlt: "Drafting follow-up communications",
   },
   {
-    image: "/images/card-image-3.png",
-    title: "Search Your History",
+    image: "/images/carousel-card-01.png",
+    title: "Create Custom Action Items",
     description:
-      "Find any discussion instantly. Search across all your meetings to surface important context when you need it.",
-    imageAlt: "Meeting history search",
+      "Go beyond generic to-dos — assign owners, set priorities, and format for your project management tools.",
+    imageAlt: "Creating custom action items",
   },
 ];
 

@@ -56,10 +56,11 @@ export default function UseCasesSection() {
             {useCases.slice(0, 3).map((useCase, index) => (
               <div
                 key={index}
-                className="flex flex-col overflow-hidden rounded-[20px] bg-neutral-50"
+                className="flex flex-col rounded-[20px] border border-zinc-200 bg-white p-6"
+                style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.08)' }}
               >
                 {/* Image */}
-                <div className="relative h-[240px] w-full overflow-hidden">
+                <div className="relative mb-4 w-full overflow-hidden rounded-[16px] aspect-[3/2]">
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
@@ -70,7 +71,7 @@ export default function UseCasesSection() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col gap-2 p-6">
+                <div className="flex flex-col gap-2">
                   <h3 className="text-[18px] font-bold leading-[26px] text-zinc-950">
                     {useCase.title}
                   </h3>
@@ -87,10 +88,11 @@ export default function UseCasesSection() {
             {useCases.slice(3, 5).map((useCase, index) => (
               <div
                 key={index + 3}
-                className="flex flex-col overflow-hidden rounded-[20px] bg-neutral-50"
+                className="flex flex-col rounded-[20px] border border-zinc-200 bg-white p-6"
+                style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.08)' }}
               >
                 {/* Image */}
-                <div className="relative h-[240px] w-full overflow-hidden">
+                <div className="relative mb-4 w-full overflow-hidden rounded-[16px] aspect-[3/2]">
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
@@ -101,7 +103,7 @@ export default function UseCasesSection() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col gap-2 p-6">
+                <div className="flex flex-col gap-2">
                   <h3 className="text-[18px] font-bold leading-[26px] text-zinc-950">
                     {useCase.title}
                   </h3>
